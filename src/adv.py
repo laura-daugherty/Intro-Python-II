@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -37,6 +38,48 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
+
+# adds items
+rf = room['foyer']
+
+rf.addItem(Item("wand", "I'm a wand"))
+rf.addItem(Item("sword", "I'm a sword"))
+
+
+player = Player("laura", room['outside'])
+
+
+while True: 
+    print(f"{player.current_room.name}")
+    print(f"{player.current_room.desc}")
+    print(f"{player.current_room}")
+    userInput = input("enter a cardinal direction : ")
+    if userInput == 'n':
+        if player.current_room.n_to is None:
+            print("You can't go that direction from here.")
+        else:
+            player.current_room = player.current_room.n_to
+            print(player.current_room.name)
+    elif userInput == 's':
+        if player.current_room.s_to is None:
+            print("You can't go that direction from here.")
+        else:
+            player.current_room = player.current_room.s_to
+            print(player.current_room.name)
+    elif userInput == 'e':
+        if player.current_room.e_to is None:
+            print("You can't go that direction from here.")
+        else:
+            player.current_room = player.current_room.e_to
+            print(player.current_room.name)
+    elif userInput == 'w':
+        if player.current_room.w_to is None:
+            print("You can't go that direction from here.")
+        else:
+            player.current_room = player.current_room.w_to
+            print(player.current_room.name)
+    else:
+        print("I don't recognize that direction!")
 
 # Make a new player object that is currently in the 'outside' room.
 
