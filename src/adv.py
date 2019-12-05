@@ -103,6 +103,17 @@ while True:
                 print("player has no items")
         else:
             print("I don't recognize that command!")
+    elif len(wordList) == 2:
+        if wordList[0] == 'get' or 'take':
+            itemChoice = wordList[1]
+            for item in player.current_room.items:
+                if item.name == itemChoice:
+                    player.addItem(item)
+                    item.onTake(itemChoice)
+                    print(player)
+                    player.current_room.removeItem(item)
+                else:
+                    print(f"{item.name} is not the item you chose")
     else:
         print("I don't recognize that direction!")
 
