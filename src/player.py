@@ -16,4 +16,7 @@ class Player:
   def __repr__(self): # generally for programmer consumption
     return f'Items: ({repr(self.items)})'
 
+  def addItem(self, item):
+    self.items.append(item)
+
 
