@@ -65,34 +65,36 @@ player = Player("Mage Laura", room['outside'])
 
 
 while True: 
-    print(f"{player.current_room.name}")
+    print(f"You are standing in the {player.current_room.name}")
     print(f"{player.current_room.desc}")
     print(f"{player.current_room}")
-    userInput = input("enter a cardinal direction : ")
+    userInput = input("enter a direction or command : ")
+    wordList=userInput.split(" ",userInput.count(" "))
+    if len(wordList) == 1:
     if userInput == 'n':
         if player.current_room.n_to is None:
             print("You can't go that direction from here.")
         else:
             player.current_room = player.current_room.n_to
-            print(player.current_room.name)
+                print((f'You are now in {player.current_room.name}'))
     elif userInput == 's':
         if player.current_room.s_to is None:
             print("You can't go that direction from here.")
         else:
             player.current_room = player.current_room.s_to
-            print(player.current_room.name)
+                print((f'You are now in {player.current_room.name}'))
     elif userInput == 'e':
         if player.current_room.e_to is None:
             print("You can't go that direction from here.")
         else:
             player.current_room = player.current_room.e_to
-            print(player.current_room.name)
+                print((f'You are now in {player.current_room.name}'))
     elif userInput == 'w':
         if player.current_room.w_to is None:
             print("You can't go that direction from here.")
         else:
             player.current_room = player.current_room.w_to
-            print(player.current_room.name)
+                print((f'You are now in {player.current_room.name}'))
     else:
         print("I don't recognize that direction!")
 
