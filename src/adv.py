@@ -19,8 +19,8 @@ the distance, but there is no way across the chasm."""),
 to north. The smell of gold permeates the air."""),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
-chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+chamber! Fortunately, you're the first person to come upon this treasure and take all 
+the loot! The only exit is to the south."""),
 }
 
 
