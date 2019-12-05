@@ -41,24 +41,24 @@ room['treasure'].s_to = room['narrow']
 
 # adds itemsNrf = room['foyer']
 rf = room['foyer']
-rf.addItem(Item("wand", "I'm a wand"))
-rf.addItem(Item("sword", "I'm a sword"))
+rf.addItem(Item("wand", "I'm a wand", 3))
+rf.addItem(Item("sword", "I'm a sword", 4))
 
 rOut = room['outside']
-rOut.addItem(Item("bottlecap", "I'm a bottlecap"))
-rOut.addItem(Item("healthkit", "I'm a healthkit"))
+rOut.addItem(Item("bottlecap", "I'm a bottlecap", -1))
+rOut.addItem(Item("healthkit", "I'm a healthkit", 5))
 
 rOver = room['overlook']
-rOver.addItem(Item("spyglass", "I'm a spyglass"))
-rOver.addItem(Item("rock", "I'm a rock"))
+rOver.addItem(Item("spyglass", "I'm a spyglass", 3))
+rOver.addItem(Item("rock", "I'm a rock", -1))
 
 rN = room['narrow']
-rN.addItem(Item("painting", "I'm a painting"))
-rN.addItem(Item("candy", "I'm candy"))
+rN.addItem(Item("painting", "I'm a painting", 9))
+rN.addItem(Item("candy", "I'm candy", 4))
 
 rT = room['treasure']
-rT.addItem(Item("diamonds", "I'm some diamonds"))
-rT.addItem(Item("magic", "I'm magic"))
+rT.addItem(Item("diamonds", "I'm some diamonds", 50))
+rT.addItem(Item("magic", "I'm magic", 50))
 
 
 player = Player("Mage Laura", room['outside'])
@@ -110,7 +110,7 @@ while True:
                 if item.name == itemChoice:
                     player.addItem(item)
                     item.onTake(itemChoice)
-                    print(player)
+                    player.addPoints(item.points)
                     player.current_room.removeItem(item)
                 else:
                     print(f"{item.name} is not the item you chose")
@@ -120,7 +120,7 @@ while True:
                 if item.name == itemChoice:
                     player.removeItem(item)
                     item.onDrop(item.name)
-                    print(player)
+                    player.removePoints(item.points)
                     player.current_room.addItem(item)
     else:
         print("I don't recognize that direction!")
