@@ -7,6 +7,13 @@ class Player:
     self.items = []
 
   
+  def __str__(self):
+    r = f"{self.name} has these items:\n"
+    for n in enumerate(self.items, start = 1):
+      r += f"    {n}\n"
+    return r
 
+  def __repr__(self): # generally for programmer consumption
+    return f'Items: ({repr(self.items)})'
 
 
