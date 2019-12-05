@@ -39,14 +39,29 @@ room['treasure'].s_to = room['narrow']
 # Main
 #
 
-# adds items
+# adds itemsNrf = room['foyer']
 rf = room['foyer']
-
 rf.addItem(Item("wand", "I'm a wand"))
 rf.addItem(Item("sword", "I'm a sword"))
 
+rOut = room['outside']
+rOut.addItem(Item("bottlecap", "I'm a bottlecap"))
+rOut.addItem(Item("healthkit", "I'm a healthkit"))
 
-player = Player("laura", room['outside'])
+rOver = room['overlook']
+rOver.addItem(Item("spyglass", "I'm a spyglass"))
+rOver.addItem(Item("rock", "I'm a rock"))
+
+rN = room['narrow']
+rN.addItem(Item("painting", "I'm a painting"))
+rN.addItem(Item("candy", "I'm candy"))
+
+rT = room['treasure']
+rT.addItem(Item("diamonds", "I'm some diamonds"))
+rT.addItem(Item("magic", "I'm magic"))
+
+
+player = Player("Mage Laura", room['outside'])
 
 
 while True: 
