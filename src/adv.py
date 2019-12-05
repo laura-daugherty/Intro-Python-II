@@ -72,31 +72,31 @@ while True:
     userInput = input("enter a direction or command : ")
     wordList=userInput.split(" ",userInput.count(" "))
     if len(wordList) == 1:
-    if userInput == 'n':
-        if player.current_room.n_to is None:
-            print("You can't go that direction from here.")
-        else:
-            player.current_room = player.current_room.n_to
+        if userInput == 'n':
+            if player.current_room.n_to is None:
+                print("You can't go that direction from here.")
+            else:
+                player.current_room = player.current_room.n_to
                 print((f'You are now in {player.current_room.name}'))
-    elif userInput == 's':
-        if player.current_room.s_to is None:
-            print("You can't go that direction from here.")
-        else:
-            player.current_room = player.current_room.s_to
+        elif userInput == 's':
+            if player.current_room.s_to is None:
+                print("You can't go that direction from here.")
+            else:
+                player.current_room = player.current_room.s_to
                 print((f'You are now in {player.current_room.name}'))
-    elif userInput == 'e':
-        if player.current_room.e_to is None:
-            print("You can't go that direction from here.")
-        else:
-            player.current_room = player.current_room.e_to
+        elif userInput == 'e':
+            if player.current_room.e_to is None:
+                print("You can't go that direction from here.")
+            else:
+                player.current_room = player.current_room.e_to
                 print((f'You are now in {player.current_room.name}'))
-    elif userInput == 'w':
-        if player.current_room.w_to is None:
-            print("You can't go that direction from here.")
-        else:
-            player.current_room = player.current_room.w_to
+        elif userInput == 'w':
+            if player.current_room.w_to is None:
+                print("You can't go that direction from here.")
+            else:
+                player.current_room = player.current_room.w_to
                 print((f'You are now in {player.current_room.name}'))
-        elif userInput == 'i' or 'inventory':
+        elif userInput == 'i' or userInput == 'inventory':
             if player.items:
                 for item in player.items:
                     print(f"You have a {item.name}")
@@ -105,26 +105,26 @@ while True:
         else:
             print("I don't recognize that command!")
     elif len(wordList) == 2:
-        if wordList[0] == 'get' or 'take':
-            itemChoice = wordList[1]
+        verbChoice = wordList[0]
+        itemChoice = wordList[1]
+        if verbChoice == 'get' or verbChoice == 'take':
             for item in player.current_room.items:
                 if item.name == itemChoice:
                     player.addItem(item)
                     item.onTake(itemChoice)
                     player.addPoints(item.points)
                     player.current_room.removeItem(item)
-                else:
-                    print(f"{item.name} is not the item you chose")
-        if wordList[0] == 'drop':
-            itemChoice = wordList[1]
+                
+        elif verbChoice == 'drop':
             for item in player.items:
                 if item.name == itemChoice:
                     player.removeItem(item)
                     item.onDrop(item.name)
                     player.removePoints(item.points)
                     player.current_room.addItem(item)
-    else:
-        print("I don't recognize that direction!")
+        else:
+            print("I don't recognize that command!")
+
 
 # Make a new player object that is currently in the 'outside' room.
 
