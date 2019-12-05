@@ -8,7 +8,7 @@ class Item:
 
   def __repr__(self): # generally for programmer consumption
     return f'name: {self.name}'
-  
+
   def onTake(self, item):
     print(f"you have picked up a {item}")
 
