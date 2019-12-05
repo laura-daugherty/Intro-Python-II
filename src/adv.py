@@ -114,6 +114,14 @@ while True:
                     player.current_room.removeItem(item)
                 else:
                     print(f"{item.name} is not the item you chose")
+        if wordList[0] == 'drop':
+            itemChoice = wordList[1]
+            for item in player.items:
+                if item.name == itemChoice:
+                    player.removeItem(item)
+                    item.onDrop(item.name)
+                    print(player)
+                    player.current_room.addItem(item)
     else:
         print("I don't recognize that direction!")
 
