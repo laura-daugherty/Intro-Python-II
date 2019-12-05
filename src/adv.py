@@ -95,6 +95,14 @@ while True:
         else:
             player.current_room = player.current_room.w_to
                 print((f'You are now in {player.current_room.name}'))
+        elif userInput == 'i' or 'inventory':
+            if player.items:
+                for item in player.items:
+                    print(f"You have a {item.name}")
+            else:
+                print("player has no items")
+        else:
+            print("I don't recognize that command!")
     else:
         print("I don't recognize that direction!")
 
