@@ -65,6 +65,7 @@ player = Player("Mage Laura", room['outside'])
 
 
 while True: 
+    print(f"{player}")
     print(f"You are standing in the {player.current_room.name}")
     print(f"{player.current_room.desc}")
     print(f"{player.current_room}")
